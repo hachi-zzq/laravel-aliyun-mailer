@@ -1,0 +1,37 @@
+{
+    "name": "hachi-zzq/laravel-aliyun-mailer",
+    "description": "适用 Laravel 的 阿里云邮件推送服务 SDK",
+    "keywords": [
+      "laravel",
+      "alibaba",
+      "aliyun",
+      "阿里云",
+      "sdk"
+    ],
+    "license": "MIT",
+    "authors": [
+      {
+        "name": "hachi",
+        "email": "haichi.zzq@gmail.com"
+      }
+    ],
+    "require": {
+        "hachi-zzq/alibaba": "^1.0",
+        "laravel/framework": "5.6.*"
+    },
+    "autoload": {
+      "psr-4": {
+        "Hachi\\LaravelAliyunMailer\\": "src/"
+      }
+    },
+    "repositories": [
+      {
+        "type": "composer",
+        "url": "https://packagist.phpcomposer.com"
+      },
+      {
+        "packagist": false
+      }
+    ]
+
+}
