@@ -70,6 +70,11 @@ return [
 
 在 config/app.php 的 ``providers`` 数组中添加如下
 
+
+### 修改mail驱动
+
+将 config/mail.php 里面的 driver 修改为 'aliyun'
+
 ```php
 
  Hachi\LaravelAliyunMailer\ServiceProvider::class
