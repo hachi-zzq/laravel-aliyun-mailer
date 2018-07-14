@@ -15,7 +15,7 @@ composer require hachi-zzq/laravel-aliyun-mailer
 
 ## 开始使用
 
-### 添加配置文件到 config/alibab.php
+### 添加配置文件到 config/aliyun.php
 
 ```php
 <?php

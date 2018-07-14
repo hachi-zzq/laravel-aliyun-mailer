@@ -8,9 +8,9 @@ namespace Hachi\LaravelAliyunMailer;
  * Author: Zhengqian.zhu <zhuzhengqian@vchangyi.com>
  */
 
-use Hachi\LaravelAliyunMailer\Transport\AliyunTransport;
 use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
 use Hachi\Alibaba\Application as AliyunApplication;
+use Hachi\LaravelAliyunMailer\Transport\TransportManager as AliyunTransportManager;
 
 class ServiceProvider extends LaravelServiceProvider
 {
@@ -24,16 +24,8 @@ class ServiceProvider extends LaravelServiceProvider
     {
         $this->registerAliyunServiceProvider($this->app->get('config')['aliyun']);
 
-        /**
-         * @var \Illuminate\Mail\TransportManager $transportManager
-         */
-        $transportManager = $this->app->get('swift.transport');
-
-        $transportManager->extend(AliyunTransport::class, function ($app) {
-            /**
-             * @var \Illuminate\Contracts\Foundation\Application $app
-             */
-            return new AliyunTransport();
+        $this->app->singleton('swift.transport', function ($app) {
+            return new AliyunTransportManager($app);
         });
     }
 
@@ -44,8 +36,8 @@ class ServiceProvider extends LaravelServiceProvider
      */
     protected function registerAliyunServiceProvider(array $config)
     {
-        $this->app->singleton(AliyunApplication::class,function($config){
-           return new AliyunApplication($config);
+        $this->app->singleton(AliyunApplication::class, function ($app) use ($config) {
+            return new AliyunApplication($config);
         });
     }
 }
