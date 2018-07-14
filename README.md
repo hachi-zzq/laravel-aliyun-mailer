@@ -17,6 +17,12 @@ composer require hachi-zzq/laravel-aliyun-mailer
 
 ### 添加配置文件到 config/aliyun.php
 
+``
+php artisan vendor:publish --tag=aliyun
+
+``
+你将得到以下配置文件
+
 ```php
 <?php
 

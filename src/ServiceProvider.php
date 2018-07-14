@@ -40,4 +40,11 @@ class ServiceProvider extends LaravelServiceProvider
             return new AliyunApplication($config);
         });
     }
+
+    public function boot()
+    {
+        $this->publishes([
+            __DIR__.'/config.php'=>config_path('aliuyn.php')
+        ],'aliyun');
+    }
 }
