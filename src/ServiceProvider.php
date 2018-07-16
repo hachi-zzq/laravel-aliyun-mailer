@@ -24,8 +24,8 @@ class ServiceProvider extends LaravelServiceProvider
     {
         $this->registerAliyunServiceProvider($this->app->get('config')['aliyun']);
 
-        $this->app->singleton('swift.transport', function ($app) {
-            return new AliyunTransportManager($app);
+        $this->app->extend('swift.transport', function ($transport) {
+            return new AliyunTransportManager($this->app);
         });
     }
 
